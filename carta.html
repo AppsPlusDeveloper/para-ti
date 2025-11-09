@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Carta Web con Fondo Fijo y Scroll Interno</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            
+            /* IMAGEN DE FONDO */
+            background-image: url('background.jpeg'); /* Asegúrate de que este archivo esté en la misma carpeta */
+            background-size: cover; /* Cubre toda el área */
+            background-position: center center; /* Centra la imagen */
+            background-attachment: fixed; /* Mantiene la imagen fija al hacer scroll */
+            
+            color: #333; /* Color de texto por defecto */
+            display: flex; /* Para centrar la carta en la pantalla */
+            justify-content: center; /* Centra horizontalmente */
+            align-items: center; /* Centra verticalmente */
+            min-height: 100vh; /* Asegura que el body ocupe toda la altura de la ventana */
+        }
+
+        .carta-container {
+            max-width: 600px;
+            /* Altura fija con scroll interno si el contenido es muy largo */
+            height: calc(100vh - 80px); /* Ocupa casi toda la altura de la ventana (100vh - 40px arriba - 40px abajo) */
+            overflow-y: auto;          /* Muestra la barra de desplazamiento vertical solo si el contenido excede la altura */
+            
+            padding: 30px 40px; /* Padding general */
+            padding-right: 60px; /* Un poco más de padding a la derecha para compensar la barra de scroll */
+
+            background-color: rgba(255, 255, 255, 0.85); /* Fondo blanco semi-transparente */
+            border-radius: 8px; /* Bordes redondeados */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+            text-align: left;
+            margin: 20px; /* Margen para pantallas pequeñas si el 100vh es muy ajustado */
+        }
+
+        /* Estilos para la barra de desplazamiento (opcional, para personalizar su apariencia) */
+        .carta-container::-webkit-scrollbar {
+            width: 12px; /* Ancho de la barra de desplazamiento */
+        }
+
+        .carta-container::-webkit-scrollbar-track {
+            background: #f1f1f1; /* Color del fondo de la barra */
+            border-radius: 10px;
+        }
+
+        .carta-container::-webkit-scrollbar-thumb {
+            background: #888; /* Color del "pulgar" de la barra */
+            border-radius: 10px;
+        }
+
+        .carta-container::-webkit-scrollbar-thumb:hover {
+            background: #555; /* Color del "pulgar" al pasar el ratón */
+        }
+
+
+        h2 {
+            color: #ff40bd; /* Un color para el título */
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .fecha-remitente {
+            text-align: right;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .firma {
+            margin-top: 40px;
+            font-weight: bold;
+        }
+
+        .remitente-info {
+            font-style: italic;
+            color: #555;
+            font-size: 0.9em;
+        }
+        
+  
+  details {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 rgba(0, 0, 0, 0.1);
+  }
+
+  summary {
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  summary:hover {
+    color: #666;
+  }
+
+    </style>
+</head>
+<body>
+
+    <div class="carta-container">
+
+        <p class="fecha-remitente">9/11/2025</p>
+        
+        <h2>Para Esbeidy <img src="resources/carta.png" alt="" width="40" height="40"></h2>
+
+<p>Esta vez quería escribirte cosas que normalmente no digo por vergüenza o que simplemente me cuestan expresar:</p> 
+
+<p>Creo que eres una persona realmente maravillosa, tienes todo cualquiera querría tener en su vida.</br>Ante mis ojos eres perfecta y lo que tú llamas <spam>defectos</spam>, para mi son virtudes que solo te hacen aún más única y especial.</br>De entre todas las mujeres tú destacas por tú belleza y carisma, mientras todoas ven hacia la sima de la montaña como algo inalcanzable... ¡Tú te postras sobre ella! Por qué no hay nada más bonito que ver tús ojos y nada más dulce que escuchar tú voz, no hay un segundo en el que no desee estar a tú lado y además cuando lo estoy, te pienso y cuando duermo, te sueño, eres como un bello atardecer y yo como aquella persona que adora verlo.</br>Eres todo lo que necesito en mí y así viva 1 o 100 años más, me gustaría compartirlos contigo, por que contigo soy feliz y sintigo siento que no soy nada.</br>No creas que es pasajero esto que siento por tí, ya que no lo es, mis intenciones son 100% sinceras y honestas. Me gustaría hacer una vida a tú lado, amarte y cuidarte siempre. Daría todo por tí, te daría todo de mí, y nunca te daría la espalda.</p>
+
+<p>Probablemente no me vas a entender en este punto, pero no sabes lo feliz que me despierto en las mañanas sabiendo que podré verte una vez más, realmente se siente muy bien tener a alguien especial en mi corazón, jaja jamás creí que iría a trabajar tan feliz. No se que pensaras más específicamente de mí, no me lo haz dicho muy a fondo, pero espero ser alguien especial para tí. De ser así... Hmmmm... piénsalo ¿si? Se que puedo no ser la mejor opción pero te daré todo de mí. Aunque dices que la edad es un problema para mí no lo es, no hagas caso a lo que digan los demás, a final de cuentas solo estaremos aquí una vez, sea cual sea el tiempo que vivamos, se va a terminar y no creo conveniente pensar en los demás antes que en nosotros mismos. Pero bueno, esa es mi opinión, como dije, no se exactamente que pienses de mí. Pero si te gustaría al igual que mí, crecer juntos ¡Hagamozlo! No tiene que ser ahora mismo, claro, pero si me gustaría que sea algún día, te daré la mano y si decides seguirme, recorreremos la vida juntos por siempre</p>
+
+<p>Probablemente no me creíste cuando te dije que solo tenias que cambiar tú forma de verte a tí misma. Lo dije de verdad, te juro que para mí, es lo único que deberías de cambiar de tí. Tú forma de expresarte de tí no me agrada, y es que eres muy hermosa como para estar pensando eso. Cuando te sientas "fea" o "gorda" como dices, recuerda que aquí hay alguien que piensa que eres perfecta tal cuál eres. Recuerda que hay alguien a quien haces feliz con un "Buenos días", hay alguien que siente que el corazón se le sale cuando está cercas de tí y también hay alguien que se muere de ganas de ser y vivir para tí.</p>
+
+<p>También creo que no me creíste que te quiero un 10. Bueno, tampoco mentí. Pero ¿Por qué lo dije? Por qué lo siento, porque nunca me había sentido así y es un poco raro, jamás me ví escribiendo carta, y aquí estoy. Estoy escribiendo con mi corazón, no con mis dedos y lo que siento es un gran amor por tí, unas ganas inmensas de abrazarte y nunca soltarte, por alguna razón me dan muchísimas ganas de sacar todo lo que siento y decírtelo. Si pudiera volar y gritar a todos que eres la mujer de mi sueños créeme que lo haría. Jamas había sentido tantas ganas de estar con alguien y darlo todo, pero sabes, tampoco había sentido tanta impotencia en mi vida, la impotencia de tener que decir "nos vemos" y no "¿nos vamos?", de tener que decir "con cuidado" y no "yo te cuido", ni la impotencia de no poder tenerte entre mis brazos a cada instante y para siempre. Sé siente feo pero a la vez bien, te veo sonreír y me reinicio, de repente estoy feliz de nuevo, cuando estoy contigo pienso con el corazón, mi cerebro se apaga en ese instante y nada me importa más que tú.</p>
+
+<img src="resources/monito1.png" alt="" width="100%">
+
+<p>Ah jajaja, si lo que dice Moy te molesta, "es mi esposa", mejor se la mía y así no dirá eso, digo, es un consejo jaja, Esposa de Erick y no de Moy. Si si me gusta como suena eso. ¿Donde firmo?.</p>
+
+<p>Tengo unos videos que me gustaría mandarte, pero los tendrían que ver los intermediarios, así que aprovecho para ponerlos: </br> </br> <a href="https://www.facebook.com/share/r/19mQWW31Qu/">¿Sabes que es más grande que el univers?</a></br></br>
+<a href="https://www.facebook.com/share/r/17hJCMXSmn/">Si no es mucho pedir...</a></br></br>
+<a href="https://www.facebook.com/share/r/17XYimV23y/">Con ganas de todo</a></br></br>
+<a href="https://www.facebook.com/share/r/17M9vQ6jWE/">Tienes todo</a></br></br>
+<a href="https://www.facebook.com/share/r/1AhwLrgJf9/">Por siempre</a></p>
+
+<img src="resources/monito2.png" alt="" width="100%">
+
+<p>Se que no te gusta mi música, pero dedicar una canción que no conozco se me haría hipócrita, así que te muestro una de las que si conozco</p></br>
+
+				<audio controls>
+  <source src="resources/song1.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio> </br> </br>
+<details>
+  <summary>Imagine Dragons - Follow You</summary>
+  <p>- Te seguiré a donde sea que tú vayas, te seguiré hasta lo más bajo</br>
+- Siempre estaré por donde sea que la vida te lleve, sabes que yo te seguiré</br>
+- Quiero llevarte a la luz del sol</br>
+- Desearía poder arreglarlo, podría</br> arreglarlo por ti</br>
+- Te seguiré a lo profundo, a donde sea que vayas</br>
+-Siempre te seguiré</p>
+</details>
+</br>
+
+<p>Esto es lo que tenía que decir, espero que te haya gustado tanto cómo a mí hacerlo para tí.</p>
+
+<img src="resources/name.png" alt="" width="100%">
+        <p class="firma">
+           De tú mayor fan<br>
+            <span class="remitente-info">Te Quiero Mucho </span>
+        </p>
+
+    </div>
+
+</body>
+</html>
