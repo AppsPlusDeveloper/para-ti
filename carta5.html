@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carta para mi reina</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --paper:#fffdf8;
+      --ink:#3a2f2b;
+      --accent:#d87f7f;
+      --shadow: rgba(20,20,20,0.08);
+      --soft: rgba(216,127,127,0.12);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: linear-gradient(160deg,#f6e8e8 0%, #fbf8ef 50%, #f3f7ff 100%);
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, 'Helvetica Neue', Arial;
+      color:var(--ink);
+      padding:32px;
+    }
+
+    .card-wrap{
+      width:100%;
+      max-width:900px;
+      padding:36px;
+      background: linear-gradient(180deg, var(--paper) 0%, #fff 100%);
+      border-radius:20px;
+      box-shadow: 0 10px 30px var(--shadow);
+      position:relative;
+      border:1px solid rgba(60,50,50,0.04);
+      overflow:hidden;
+    }
+    
+    .ribbon{
+      position:absolute;
+      left:-80px;
+      top:-60px;
+      width:250px;
+      height:250px;
+      background: radial-gradient(circle at 30% 30%, var(--soft), transparent 40%);
+      transform: rotate(-18deg);
+      pointer-events:none;
+      opacity:0.9;
+    }
+
+    header{
+      display:flex;
+      gap:20px;
+      align-items:center;
+      margin-bottom:18px;
+    }
+
+    .seal{
+      width:86px;height:86px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(180deg,#fff 0%, #f8eef0 100%);
+      border:6px solid #ffecec;box-shadow: 0 6px 18px rgba(200,120,120,0.12);
+      font-family:'Playfair Display', serif;
+      font-size:22px;color:var(--accent);
+    }
+
+    h1{font-family:'Playfair Display', serif;margin:0;font-size:28px;color:var(--ink)}
+    p.lead{margin:0;color:#6a5d5a;font-size:14px}
+
+    .letter{
+      margin-top:22px;
+      padding:28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.85));
+      border-radius:12px;
+      border:1px dashed rgba(100,80,80,0.06);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+      line-height:1.75;
+      font-size:16px;
+      color:var(--ink);
+    }
+
+    .letter mark{background:linear-gradient(90deg, rgba(216,127,127,0.14), rgba(226,180,180,0.12));padding:2px 6px;border-radius:6px}
+
+    .signature{
+      margin-top:20px;
+      display:flex;flex-direction:column;align-items:flex-end;
+    }
+    .signature .name{font-family:'Playfair Display', serif;font-size:20px;color:var(--accent)}
+    .signature .small{font-size:12px;color:#7a6b6b}
+
+    
+    .controls{
+      display:flex;gap:10px;margin-top:22px;align-items:center;justify-content:flex-end
+    }
+    .btn{
+      appearance:none;border:0;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer;
+      background:linear-gradient(180deg,#fff 0%, #f7f3f3 100%);
+      box-shadow:0 4px 12px rgba(50,40,40,0.06);
+      border:1px solid rgba(120,100,100,0.06);
+    }
+    .btn.primary{background:linear-gradient(180deg,var(--accent), #c96464);color:white}
+
+    
+    .card-wrap::after{
+      content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:0.04;
+      background-image:linear-gradient(0deg, rgba(255,255,255,0.6) 0%, transparent 20%), repeating-linear-gradient(90deg, rgba(0,0,0,0.02) 0px, rgba(0,0,0,0.02) 1px, transparent 2px, transparent 10px);
+    }
+
+    @media (max-width:640px){
+      .card-wrap{padding:20px;border-radius:14px}
+      .seal{width:64px;height:64px;font-size:18px}
+    }
+  </style>
+</head>
+<body>
+  <div class="card-wrap" role="main">
+    <div class="ribbon" aria-hidden="true"></div>
+
+    <header>
+      <div class="seal">❤️</div>
+      <div>
+        <h1>Para Mi Reina</h1>
+        <p class="lead">Una carta hecha para el amor de mi vida</p>
+      </div>
+    </header>
+
+    <article class="letter">
+
+      <p><mark>Aún recuerdo cuando nos conocimos</mark> — desde ese día todo cambió para mí, llegaste inesperadamente a mi vida cuando más te necesitaba, habiendo nacido en lugares y años distintos la vida nos reunio un día y desde ahí todo se hizo más bonito para mi... de alguna manera el tiempo pasaba distinto, los días se hicieron menos pesados e incluso despertaba con ganas y energías de volver a la rutina que antes consideraba aburrida, de pronto tenía artas ganas de ir a trabajar pero había un motivo detrás de todo eso, el motovo era verte, ver tú carita, ver tus ojitos, ver sonrisa, platicar contigo. Te volviste el motivo de mi felicidad y con forme pasaba y pasaba el tiempo, me fui enamorando más y más de tí hasta el pundo de decir <mark>ella es la mujer que quiero en mi vida</mark> - eres sin duda alguna la mujer más hermosa en todo el mundo, eres alguien muy muy muy bonita y muy muy muy bella, cada parte de tí es perfecta y todo eso se complementa con un gran corazón, una gran empatia y una muy bonita personalidad, también tenemos que destacar tú gran madurez y caracter, creo que eres alguien muy fuerte y centrada, alguien que bueno, ya paso por algunas cosas y aunque no fue la mejor manera de aprender... ah aprendido de la vida y gracias a ello tiene idea muy claras sobre lo que esta bien y lo que no, lo que puede hacer y lo que no y sabe que limites poner. Eso me gusta, me gusta que seas directa y justa, me gustan las ideas que me haz planteado en el sentido de como llevar una relación. Me eh dado cuenta de que eres realmente alguien por quien vale la pena hacer cualquier cosa con tal de estar a tú lado. Me haces decir y hacer cosas que nunca había hecho, me consume la vergüenza aunque no lo creas, mi cuerpo tiembla y me corazón parece querer salir de mi pecho, pero a pesar de esa sensación 'extraña' estoy realmente feliz y en paz. No puedo esperar al momento en el que tengamos que dejar de escondernos y ser felices juntos, tomarte de la mano y salir a caminar, a comer, a platicar o simplemente hacer lo que sea pero a tú lado, es un día que espero con emoción y alegría, después de eso y cuando el momento llegue me gustaría <mark>darte mi mano</mark> y si desides tomarla, iremos a casarnos y así seremos oficialmente esposos, es un sueño que realmente tengo y realmente deseo que se cumpla algún día, me gustaría compartir el resto de mi vida contigo, estar siempre para tí en las buenas, en la maslas pero sobre todo, en las peores. Debes de saber que mientras yo este con vida nunca te va faltar quien te quiera y cuide, por que siempre estaré para tí, siempre puedes contar conmigo para lo que necesites, siempre tendrás lo mejor de mí. Sabes... ya te lo dije pero, yo nunca me había sentido tan querido, ni había sentido que alguien se preocupara por mi, eso me gusta mucho, me gusta como me haces sentir, de alguna manera me hace sentir importante. Eres alguien a quien nunca quiero perder, siempre voy a cuidar tú corazoncito por que me gustaría que tú decidas quedarte por como te sientes conmigo. <mark>Te AMO CON TODO MI CORAZÓN</mark></p>
+
+      <div class="signature">
+        <div class="name">Con todo mi amor</div>
+        <div class="small">Fecha: <em>01/12/2025</em></div>
+      </div>
+    </article>
+
+  </div>
+
+  <script>
+    // Descargar como PDF usando la impresora del navegador
+    document.getElementById('downloadBtn').addEventListener('click', function(){
+      window.print();
+    });
+  </script>
+</body>
+</html>
