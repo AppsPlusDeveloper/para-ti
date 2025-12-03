@@ -1,0 +1,38 @@
+body {
+    background: linear-gradient(160deg,#f6e8e8 0%, #fbf8ef 50%, #f3f7ff 100%);
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    align-content: center;
+    position: relative;
+}
+
+img {
+    width: 49%;
+}
+
+p {
+    color: #5f5f5f;
+    text-align: center;
+}
+
+h1 {
+    color: #000;
+    text-align: center;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ff95e7;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+footer h2 {
+    color: #fff;
+}
