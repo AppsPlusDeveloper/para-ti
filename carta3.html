@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para la mujer de mis sueños</title>
+    <link rel="stylesheet" href="password.css">
     <style>
         /* styles.css */
         body {
@@ -60,6 +61,25 @@
     </style>
 </head>
 <body>
+
+<!-- Diálogo de contraseña -->
+  <div id="password-dialog">
+    <div id="password-dialog-content">
+      <h2>¿Quién eres?</h2>
+      <p>Esto es exclusivamente para la mujer más hermosa del mundo, si lo eres... ingresa la contraseña :3</p>
+      <form>
+        <input type="password" id="password" placeholder="Escribe la contraseña" />
+        <button onclick="checkPassword(event)">Ingresar</button>
+
+      </form>
+      <div id="error-message" style="color: red;"></div>
+    </div>
+  </div>
+
+        
+        
+        <div id="page-content">
+    
     <div class="contenedor">
         <div class="carta">
             <div class="imagen">
@@ -85,5 +105,7 @@
             <p style="color: #ff2a74;">Te quiero mucho</p>
         </div>
     </div>
+</div>
 </body>
+    <script src="password.js"></script>
 </html>
