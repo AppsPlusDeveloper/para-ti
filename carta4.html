@@ -3,11 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Esbeidy</title>
+    <title>Para Mi VIDA</title>
     <link rel="icon" type="image/png" href="resources/icon.png">
     <link rel="stylesheet" href="styles_c4.css">
+    <link rel="stylesheet" href="password.css">
+    
 </head>
 <body>
+
+          <!-- Diálogo de contraseña -->
+  <div id="password-dialog">
+    <div id="password-dialog-content">
+      <h2>¿Quién eres?</h2>
+      <p>Esto es exclusivamente para la mujer más hermosa del mundo, si lo eres... ingresa la contraseña :3</p>
+      <form>
+        <input type="password" id="password" placeholder="Escribe la contraseña" />
+        <button onclick="checkPassword(event)">Ingresar</button>
+
+      </form>
+      <div id="error-message" style="color: red;"></div>
+    </div>
+  </div>
+
 
     <div class="carta-container">
 
@@ -19,5 +36,7 @@
  
         </center>
     </div>
+</div>
 </body>
+    <script src="password.js"></script>
 </html>
