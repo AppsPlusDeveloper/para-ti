@@ -4,9 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para la más bonita de todas</title>
+    <link rel="stylesheet" href="password.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Diálogo de contraseña -->
+  <div id="password-dialog">
+    <div id="password-dialog-content">
+      <h2>¿Quién eres?</h2>
+      <p>Esto es exclusivamente para la mujer más hermosa del mundo, si lo eres... ingresa la contraseña :3</p>
+      <form>
+        <input type="password" id="password" placeholder="Escribe la contraseña" />
+        <button onclick="checkPassword(event)">Ingresar</button>
+
+      </form>
+      <div id="error-message" style="color: red;"></div>
+    </div>
+  </div>
+
+        
+        
+        <div id="page-content">
     <div class="scroll-container">
         <center>
         <div class="ventana background1">
@@ -85,5 +103,7 @@
          -->
         <!-- Agrega más ventanas aquí -->
     </div>
+        </div>
 </body>
+    <script src="password.js"></script>
 </html>
