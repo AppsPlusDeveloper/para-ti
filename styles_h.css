@@ -36,3 +36,66 @@ footer {
 footer h2 {
     color: #fff;
 }
+
+
+.scroll-horizontal {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  margin: 10px;
+}
+
+.scroll-horizontal::-webkit-scrollbar {
+  height: 10px;
+}
+
+.scroll-horizontal::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 5px;
+}
+
+.scroll-horizontal img {
+  width: 200px;
+  height: 150px;
+  margin-right: 5px;
+}
+
+.slider-texto {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
+
+.texto-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.texto-item.activo {
+  opacity: 1;
+}
+
+.nota {
+  width: 90%;
+  background: url('assets/back2.png');
+  border-radius: 20px;
+  box-shadow: 0 10px 30px var(--shadow);
+  position: relative;
+  border: 1px solid rgba(60,50,50,0.08);
+  overflow: hidden;
+  margin: 0 auto; /* Agrega esta línea */
+}
+
+
+
+.nota p {
+    margin: 25px;
+    font-size: 24px;
+}
