@@ -1,3 +1,13 @@
+let textos = document.querySelectorAll('.texto-item');
+let indice = 0;
+
+setInterval(() => {
+  textos[indice].classList.remove('activo');
+  indice = (indice + 1) % textos.length;
+  //Tiempo de transición 3.5 segundos
+  textos[indice].classList.add('activo');
+}, 3500);
+
 // Contraseña correcta
     const correctPassword = "SoyLaMasHermosa";
 
