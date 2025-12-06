@@ -1,5 +1,5 @@
 // Contraseña correcta
-    const correctPassword = "Erick&EsbeidyXsiempre";
+    const correctPassword = "SoyLaMasHermosa";
 
     // Mostrar input
     document.getElementById("password-dialog").style.display = "flex";
