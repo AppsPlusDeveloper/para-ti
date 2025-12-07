@@ -8,6 +8,8 @@
     
     <link rel="stylesheet" href="styles_h.css">
     <link rel="stylesheet" href="password.css">
+    <link rel="stylesheet" href="utils/dialog.css">
+    <link rel="stylesheet" href="utils/carta1.css">
     
 </head>
 <body>
@@ -65,6 +67,12 @@
     
     <div class="scroll-horizontal">
         
+        <!-- Nuevas -->
+   <img src="assets/imgs/6.png" style="width: 45%; height: 45%;">
+  <img src="assets/imgs/7.png" style="width: 45%; height: 45%;">
+  
+  <b> <-- Nuevas </b>
+        
   <img src="assets/imgs/1.png" style="width: 45%; height: 45%;">
   <img src="assets/imgs/2.png" style="width: 45%; height: 45%;">
   <img src="assets/imgs/3.png" style="width: 45%; height: 45%;">
@@ -75,6 +83,9 @@
 
 </br></br>
    <video src="assets/song2.mp4" controls width="95%" poster="assets/min2.png" style="margin: 10px;"></video>
+   </br>
+   </br>
+   <video src="assets/song3.mp4" controls width="95%" poster="assets/min3.png" style="margin: 10px;"></video>
    
    </br></br>
    <center>
@@ -83,6 +94,25 @@
   <div class="nota">
       <p>¡Hola mi reina hermosa!</br>Quiero decirte que te AMO con todo mí corazón y también que debes saber que como tú no hay dos en este mundo, eres sin duda alguna increíble y maravillosa, eres hermosa y muy baliosa, tus ojitos brillan como estrellas y tú sonrisa irradia el calor que necesita mi corazón. Por ser como eres. TE AMO MUCHÍSIMO MI VIDA</p>
   </div>
+  
+  <!-- Dialog Inicio -->
+  
+  <dialog id="miDialogo">
+  <div class="dialog-content" style="margin: 0;padding: 0;font-family: Arial, sans-serif;line-height: 1.6;background-image: url('background.jpeg');background-size: cover;background-position: center center;background-attachment: fixed;color: #333;display: flex;justify-content: center;align-items: center;min-height: 100vh;">
+      
+ <img src="assets/imgs/1.png" alt="" width="100%">
+      
+  </div>
+  <div class="dialog-buttons">
+    <button id="cerrarDialogo" class="btn btn-primary">Cerrar</button>
+  </div>
+</dialog>
+
+
+<!-- Dialogo Final -->
+      
+     
+  
   
     </br></br></br></br></br>
     
@@ -96,5 +126,6 @@
 </body>
 
    <script src="password.js"></script>
+   <script src="utils/dialog.js"></script>
 
 </html>
