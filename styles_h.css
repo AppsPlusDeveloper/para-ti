@@ -99,3 +99,20 @@ footer h2 {
     margin: 25px;
     font-size: 24px;
 }
+
+.text-animate {
+    background-image: url('assets/backt.png');
+    background-size: contain;
+    background-clip: text;
+    color: transparent;
+    animation: animate 20s linear infinite;
+    font-size: 75px;
+    font-weight: 900;
+}
+
+@keyframes animate {
+ to {
+     background-position-x: -500px;
+ }
+    
+}
