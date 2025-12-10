@@ -8,7 +8,22 @@
     <link rel="stylesheet" href="password.css">
 </head>
 <body>
-    <div class="card-container">
+
+      <!-- Diálogo de contraseña -->
+  <div id="password-dialog">
+    <div id="password-dialog-content">
+      <h2>¿Quién eres?</h2>
+      <p>Esto es exclusivamente para la mujer más hermosa del mundo, si lo eres... ingresa la contraseña :3</p>
+      <form>
+        <input type="password" id="password" placeholder="Escribe la contraseña" />
+        <button onclick="checkPassword(event)">Ingresar</button>
+
+      </form>
+      <div id="error-message" style="color: red;"></div>
+    </div>
+  </div>
+    
+    <div class="card-container" id="page-content">
         <header>
             <h1>Para mi Reina 👑</h1>
         </header>
