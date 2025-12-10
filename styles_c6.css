@@ -1,0 +1,80 @@
+/* Estilos Generales para el Cuerpo de la Página */
+body {
+    font-family: 'Georgia', serif; /* Una fuente clásica y legible */
+    background-color: #f7f0f6; /* Fondo color lavanda muy claro */
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    min-height: 100vh; /* Asegura que ocupe toda la altura de la vista */
+    margin: 0;
+    padding: 20px;
+}
+
+/* Contenedor Principal de la Carta */
+.card-container {
+    background-color: #ffffff; /* Fondo blanco para la carta */
+    border: 5px solid #e0b0d5; /* Borde suave color malva */
+    border-radius: 15px; /* Esquinas redondeadas */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    padding: 40px;
+    max-width: 600px; /* Ancho máximo para que parezca una hoja */
+    width: 100%;
+    text-align: left;
+}
+
+/* Encabezado */
+header h1 {
+    text-align: center;
+    color: #884d88; /* Color morado suave */
+    font-family: 'Brush Script MT', 'cursive'; /* Fuente elegante para el título */
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e0b0d5;
+    padding-bottom: 10px;
+}
+
+/* Estilos de la Carta */
+.love-letter {
+    line-height: 1.6;
+    color: #4a4a4a; /* Gris oscuro para el texto */
+    font-size: 1.1em;
+}
+
+.date {
+    text-align: right;
+    font-style: italic;
+    color: #a0a0a0;
+    margin-bottom: 20px;
+}
+
+.salutation {
+    font-weight: bold;
+    color: #884d88;
+    margin-bottom: 15px;
+}
+
+.content p {
+    margin-bottom: 20px;
+    text-indent: 30px; /* Sangría en el primer párrafo */
+}
+
+/* Firma y Remitente */
+.signature {
+    margin-top: 30px;
+    text-align: right;
+    font-style: italic;
+    color: #884d88;
+}
+
+.sender {
+    text-align: right;
+    font-weight: bold;
+    color: #884d88;
+    font-family: 'Brush Script MT', 'cursive'; 
+    font-size: 1.5em;
+}
+
+/* Un pequeño detalle de corazón al final */
+.sender:after {
+    content: " ❤️";
+}
