@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi persona favorita</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a1c4fd);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            overflow: hidden;
+            color: #4a4a4a;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Carta con efecto de flotación */
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 450px;
+            width: 85%;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            z-index: 10;
+            animation: fadeIn 2s ease-out, float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .heart {
+            color: #e74c3c;
+            font-size: 60px;
+            margin-bottom: 10px;
+            animation: beat 1s infinite;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.25); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.15); }
+        }
+
+        /* Botón de música y acción */
+        .btn-love {
+            background: #ff7675;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .btn-love:hover {
+            background: #d63031;
+            transform: scale(1.05);
+        }
+
+        /* Pétalos y Brillos */
+        .petal, .sparkle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .sparkle {
+            background: white;
+            border-radius: 50%;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Estilo de los corazones que explotan */
+        .floating-heart {
+            position: absolute;
+            color: #ff7675;
+            pointer-events: none;
+            animation: fly Up 2s ease-out forwards;
+        }
+
+        @keyframes flyUp {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="particles-container"></div>
+
+    <div class="card">
+        <div class="heart" onclick="explodeHearts(event)">❤</div>
+        <h1>Para El AMOR DE MI VIDA</h1>
+        <p>Eres muy especial para mí, eres lo más bonito que me ah pasado en la vida, me alegra mucho que de alguna manera nos hayamos cruzado y decidido caminar juntos y aunque vallamos empezando a recorrer la vida juntos... Estoy seguro de querer recorrerla solo contigo, no hay forma de expresarte correctamente lo mucho que te AMO, eres una mujer maravillosa y ademas de ser hermosa estás llena de cualidades que te hacen aún más especial. Quiero que te quedes a mi lado para siempre y haré todo lo posible por que así sea.</p>
+        <!--  
+        <button class="btn-love" id="musicBtn">Activar Música y Magia ✨</button>
+-->
+        <div class="footer">
+            Con todo mi amor,<br>
+            <strong>TE AMO</strong>
+        </div>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="https://www.chosic.com/wp-content/uploads/2021/04/And-So-It-Begins-Inspired-By-Crush-Music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const container = document.getElementById('particles-container');
+        const music = document.getElementById('bgMusic');
+        const btn = document.getElementById('musicBtn');
+
+        // Función para crear pétalos y brillos
+        function createParticle(type) {
+            const particle = document.createElement('div');
+            const isPetal = type === 'petal';
+            
+            particle.className = isPetal ? 'petal' : 'sparkle';
+            
+            const size = Math.random() * (isPetal ? 15 : 5) + 5 + 'px';
+            particle.style.width = size;
+            particle.style.height = isPetal ? (parseInt(size) * 1.5 + 'px') : size;
+            
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.top = '-5vh';
+            
+            if(isPetal) {
+                particle.style.backgroundColor = ['#ffb7b7', '#ff9a9e', '#fad0c4'][Math.floor(Math.random()*3)];
+                particle.style.borderRadius = '150% 0 150% 0';
+                particle.style.animation = `fall ${Math.random() * 5 + 5}s linear forwards`;
+            } else {
+                particle.style.top = Math.random() * 100 + 'vh';
+                particle.style.animation = `blink ${Math.random() * 2 + 1}s infinite`;
+            }
+
+            container.appendChild(particle);
+            if(isPetal) setTimeout(() => particle.remove(), 10000);
+        }
+
+        // Crear partículas iniciales
+        setInterval(() => createParticle('petal'), 400);
+        for(let i=0; i<30; i++) createParticle('sparkle');
+
+        // Control de música y explosión inicial
+        btn.addEventListener('click', () => {
+            music.play();
+            btn.innerHTML = "¡Te amo mucho! ❤️";
+            for(let i=0; i<20; i++) {
+                setTimeout(explodeHearts, i * 100);
+            }
+        });
+
+        // Animación de explosión de corazones
+        function explodeHearts(e) {
+            const x = e ? e.clientX : window.innerWidth / 2;
+            const y = e ? e.clientY : window.innerHeight / 2;
+
+            for (let i = 0; i < 10; i++) {
+                const h = document.createElement('div');
+                h.className = 'floating-heart';
+                h.innerHTML = '❤';
+                h.style.left = x + 'px';
+                h.style.top = y + 'px';
+                h.style.setProperty('--x', (Math.random() - 0.5) * 400 + 'px');
+                h.style.setProperty('--y', (Math.random() - 0.5) * 400 + 'px');
+                h.style.fontSize = Math.random() * 20 + 10 + 'px';
+                document.body.appendChild(h);
+                setTimeout(() => h.remove(), 2000);
+            }
+        }
+    </script>
+</body>
+</html>
