@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ti ❤️</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --pink: #ffafbd;
+            --dark-pink: #ffc3a0;
+            --text-color: #4a4a4a;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(to bottom, #ffafbd, #ffc3a0);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* Corazones flotantes de fondo */
+        .bg-heart {
+            position: fixed;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.5);
+            z-index: -1;
+            animation: float 6s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        p {
+            font-size: 1.5rem;
+            max-width: 600px;
+        }
+
+        .heart-main {
+            font-size: 80px;
+            color: #e91e63;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+        
+        p {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="hearts-container"></div>
+
+    <section>
+        <img src="assets/heart2.png" alt="" width="45%" data-aos="zoom-in">
+        <h1 data-aos="zoom-in">¡Hola!</h1>
+        <p data-aos="fade-up" data-aos-delay="500">Tengo algo pequeño que decirte.</p>
+        <div class="scroll-indicator">Desliza hacia abajo</div>
+    </section>
+
+    <section>
+        <h1 data-aos="flip-left">Cada momento...</h1>
+        <p data-aos="fade-right">se vuelve especial si estás cerca.</p>
+        <img src="assets/stars.png" alt="" width="30%" data-aos="zoom-in">
+    </section>
+
+    <section>
+        <h1 data-aos="zoom-out-up">No importa el lugar</h1>
+        <p data-aos="fade-left">sino con quién compartes el camino.</p>
+        <img src="assets/rainbow.png" alt="" width="30%"data-aos="zoom-in">
+    </section>
+    
+    <section>
+    <h1 data-aos="flip-up">Un dato importante...</h1>
+    <p data-aos="fade-left">Eres mi notificación favorita en todo el día.</p>
+    <img src="assets/bell.png" alt="" width="30%"data-aos="zoom-in">
+</section>
+
+<section>
+    <h1 data-aos="zoom-in-right">Gracias</h1>
+    <p data-aos="zoom-in-left">por ser mi lugar seguro en este mundo.</p>
+    <img src="assets/house.png" alt="" width="30%"data-aos="zoom-in">
+</section>
+
+<section>
+    <h1 data-aos="fade-up" data-aos-anchor-placement="top-center">Lo mejor...</h1>
+    <p data-aos="fade-up" data-aos-delay="400">es que esto apenas es el comienzo.</p>
+    <img src="assets/rocket.png" alt="" width="30%"data-aos="zoom-in">
+</section>
+
+
+    <section>
+        <h1 data-aos="fade-down">Gracias</h1>
+        <p data-aos="zoom-in" data-aos-delay="300">por ser mi persona favorita.</p>
+        
+    </section>
+
+    <section>
+        <h1 data-aos="flip-up">Te amo muchísimo mi reina hermosa</h1>
+        <p data-aos="fade-up">Hoy, mañana y siempre.</p>
+        <button onclick="location.reload()" style="padding: 10px 20px; border-radius: 20px; border: none; background: white; cursor: pointer; font-weight: bold; margin-top: 20px;">Volver a empezar</button>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inicializar animaciones al scroll
+        AOS.init({
+            duration: 1200,
+        });
+
+        // Crear corazones flotantes aleatorios
+        const container = document.getElementById('hearts-container');
+        const heartIcons = ['❤️', '💖', '🥰', '🌸', '💕'];
+
+        for (let i = 0; i < 30; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'bg-heart';
+            heart.innerHTML = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            container.appendChild(heart);
+        }
+    </script>
+</body>
+</html>
