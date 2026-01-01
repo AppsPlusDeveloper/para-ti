@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para la Mujer más Hermosa</title>
+    <style>
+        :root {
+            --color-primario: #ff4d6d;
+            --color-secundario: #fff0f3;
+            --color-texto: #590d22;
+        }
+
+        body {
+            margin: 100;
+            padding: 0;
+            background: linear-gradient(135deg, #ffb3c1, #ff4d6d);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animación de fondo: Corazones */
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 20px;
+            animation: float 6s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Contenedor de la Carta */
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            transform: scale(0.9);
+            opacity: 0;
+            animation: fadeInScale 1.5s ease-out forwards;
+        }
+
+        @keyframes fadeInScale {
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        h1 {
+            color: var(--color-primario);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .content {
+            line-height: 1.8;
+            color: var(--color-texto);
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: var(--color-primario);
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .highlight:hover {
+            transform: scale(1.1);
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-style: italic;
+            color: #800f2f;
+        }
+
+        /* Botón de Interacción */
+        .btn-love {
+            background-color: var(--color-primario);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-love:hover {
+            background-color: #c9184a;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        for (let i = 0; i < 20; i++) {
+            let heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            heart.style.delay = Math.random() * 5 + 's';
+            document.body.appendChild(heart);
+        }
+    </script>
+
+    <div class="card">
+        <h1>Para mi Mujer Perfecta ❤️</h1>
+        <div class="content">
+            
+            
+            Mi amor, </br></br>
+
+​Escribo estas palabras porque a veces el corazón se llena de sentimientos que no siempre alcanzan a salir en el día a día, y hoy quiero que sepas exactamente lo que significas para mí.</br></br>
+
+​No exagero cuando digo que, para mis ojos, <span class="highlight">eres la mujer perfecta</span>. No solo por lo que eres, sino por la forma en que iluminas todo a tu alrededor. Tu cara es el paisaje que más me gusta contemplar; tiene esa armonía y esa dulzura que me dan paz cada vez que me miras. Y tu cuerpo... me parece una obra de arte, la expresión más hermosa de quien eres. Cada detalle de ti me cautiva y me recuerda <span class="highlight">lo afortunado que soy</span> de tenerte cerca.</br></br>
+
+​Estar a tu lado es <span class="highlight">mi lugar favorito</span> en el mundo. Disfruto cada segundo, desde las risas compartidas hasta los silencios tranquilos. Me haces sentir increíblemente feliz y, sobre todo, <span class="highlight">profundamente querido</span>. Tienes esa capacidad única de hacerme sentir que todo está bien con solo una sonrisa o un abrazo.</br></br>
+
+​Quiero que tengas la certeza de que <span class="highlight">como tú no hay nadie</span>. Eres única en tu esencia, en tu forma de ser y en cómo me haces vibrar. Por eso, mi promesa para ti es sencilla pero eterna: siempre te respetaré, te cuidaré y te amaré con toda la intensidad que te mereces. Gracias por ser mi compañera y por ser, simplemente, tú.</br>
+
+
+            
+            
+        </div>
+        <div class="footer">
+            ❤ Con todo mi amor eterno ❤
+        </div>
+        
+    </div>
+
+</body>
+</html>
