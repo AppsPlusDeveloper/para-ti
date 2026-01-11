@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Para Mí AMOR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(180deg, #ffdde1, #ee9ca7);
+      overflow: hidden;
+    }
+
+    /* ===== CORAZONES ===== */
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 6s infinite ease-in;
+      opacity: 0.7;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { left: -10px; top: 0; }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(45deg); }
+      100% { transform: translateY(-10vh) rotate(45deg); }
+    }
+
+    /* ===== ESCENA ===== */
+    .scene {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    /* ===== CARTA ===== */
+    .letter {
+      position: absolute;
+      bottom: 20px;
+      width: 240px;
+      height: 0;
+      background: #fffdfd;
+      overflow: hidden;
+      border-radius: 6px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      transition: height 1.2s ease, transform 1.2s ease;
+      z-index: 2; /* ahora está delante del sobre */
+    }
+
+    .envelope.open ~ .letter {
+      height: 340px;
+      transform: translateY(-160px); /* sale hacia arriba */
+    }
+
+    .letter-content {
+      padding: 20px;
+      height: 100%;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      opacity: 0;
+      transition: opacity 1s ease 0.6s;
+    }
+
+    .envelope.open ~ .letter .letter-content {
+      opacity: 1;
+    }
+
+    .letter-content::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .letter-content::-webkit-scrollbar-thumb {
+      background: #e63946;
+      border-radius: 10px;
+    }
+
+    /* ===== SOBRE ===== */
+    .envelope {
+      position: relative;
+      width: 260px;
+      height: 170px;
+      background: linear-gradient(145deg, #e63946, #ff6b81);
+      border-radius: 8px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: transform 1s ease;
+      z-index: 1; /* queda detrás de la carta */
+    }
+
+    .envelope.open {
+      transform: translateY(80px);
+    }
+
+    .envelope::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #ff9aa2 50%, #e63946 50%);
+      clip-path: polygon(0 0, 100% 0, 50% 65%);
+      transform-origin: top;
+      transition: transform 1s ease;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    .envelope.open::before {
+      transform: rotateX(180deg);
+    }
+
+    h1 {
+      text-align: center;
+      color: #e63946;
+    }
+
+    p {
+      line-height: 1.6;
+      color: #444;
+    }
+
+    .signature {
+      margin-top: 20px;
+      text-align: right;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hearts" id="hearts"></div>
+
+  <div class="scene">
+    <div class="envelope" id="envelope"></div>
+    <div class="letter">
+      <div class="letter-content">
+        <h1>Mi Amor</h1>
+        <p>Estás a cada instante en mí corazón, no hay un momento en el que no estés en mi mente, en mis sueños, estás en cada momento de mí vida. Te llevo conmigo como lo más valioso e importante que tengo y es que nunca imaginé que llegaría a amar a alguien tanto como a tí, eres realmente especial, eres una mujer realmente maravillosa e increíble, de no conocerte jamás imaginaría que alguien asi pudiera existir, pero te conocí y ¡OH VALLA! que mujer tan perfecta llegó a mí vida.</p>
+        
+        <p>Me encantas tanto que no me es difícil expresarme, tú bella carita, tus ojitos y tú sonrisa me encantan, tú cabello y tus labios me facinan, me hacen querer perder mi mirada en tí. </br>Tú cuerpo me gusta muchísimo, tú figura es muy hermosa, me enamora y me atrae muchísimo, no tienes una idea de cuanto me encantas.</p>
+        
+        <p>Tú personalidad y forma de ser me gusta tanto tanto, me gusta como eres, como te expresas, como juegas, como te comportas, lo intuitiva que eres, tú inteligencia, amabilidad, empatia, carácter ¡TODO! Me encanta todo de tí.</p>
+        
+        <p>Quiero que sepas que tienes y siempre tendrás todo de mí, te amo muchísimo, con todas mis fuerzas, mi corazón y mi alma, te amo te amo te amo, eres lo más bonito que me pudo haber pasado.</p>
+        
+        <p>Probablemente nuestro momento llegó en un punto un poco difícil, hay una razón lor la cuál no podemos estar juntos como me gustaría, sin embargo debes saber que aquí estaré para tí, esperando, esperando a que podamos estar juntos de una mejor manera, nunca te dejaré sola, siempre te voy a procurar y cuidar. Jamás te volverás a sentir de esa manera, haré todo por que seas muy muy feliz mí amor.</p>
+        
+        <p>Quiero compartir todo contigo, te quiero para toda la vida a mí lado.</p>
+      <div class="signature">Con amor ❤</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const heartsContainer = document.getElementById('hearts');
+    for (let i = 0; i < 25; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 4 + Math.random() * 4 + 's';
+      heart.style.opacity = Math.random();
+      heart.style.transform = 'scale(' + (0.5 + Math.random()) + ') rotate(45deg)';
+      heartsContainer.appendChild(heart);
+    }
+
+    const envelope = document.getElementById('envelope');
+    envelope.addEventListener('click', () => {
+      envelope.classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>
