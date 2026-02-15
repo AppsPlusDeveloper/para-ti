@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ti con Amor</title>
+    <style>
+        :root {
+            --bg-color: #ffeff5;
+            --card-color: #ffffff;
+            --accent-color: #ff4d6d;
+            --text-color: #590d22;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: var(--bg-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        /* --- Fondo de Pétalos Animados --- */
+        .petals-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .petal {
+            position: absolute;
+            background-color: #ffb3c1;
+            border-radius: 150% 0 150% 0;
+            opacity: 0.7;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* --- El Sobre Mágico --- */
+        .envelope-wrapper {
+            position: relative;
+            cursor: pointer;
+            z-index: 10;
+            transition: transform 0.3s ease;
+        }
+
+        .envelope-wrapper:hover {
+            transform: scale(1.05);
+        }
+
+        .envelope {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            background-color: var(--accent-color);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            z-index: 2;
+            border-top: 110px solid #ff758f;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            transform-origin: top;
+            transition: transform 0.5s 0.3s ease;
+        }
+
+        .envelope::after {
+            content: '';
+            position: absolute;
+            z-index: 2;
+            width: 0;
+            height: 0;
+            border-top: 100px solid transparent;
+            border-right: 150px solid #ff8fa3;
+            border-bottom: 100px solid #ff8fa3;
+            border-left: 150px solid #ff758f;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        /* --- La Carta (Ajustada para Scroll) --- */
+        .letter {
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+            width: 280px;
+            height: 180px;
+            background: white;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: transform 0.5s ease, z-index 0s 0.5s, height 0.5s ease;
+            z-index: 1;
+            overflow-y: auto; /* Permite el scroll vertical */
+            overflow-x: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-radius: 5px;
+        }
+
+        /* Estilo de la barra de scroll */
+        .letter::-webkit-scrollbar {
+            width: 6px;
+        }
+        .letter::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 10px;
+        }
+
+        .letter-text {
+            font-size: 14px;
+            color: var(--text-color);
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        /* --- Animación al Abrir (Ajustada para Scroll) --- */
+        .envelope-wrapper.open .envelope::before {
+            transform: rotateX(180deg);
+            z-index: 0;
+        }
+
+        .envelope-wrapper.open .letter {
+            transform: translateY(-140px); /* Sube la carta para verla mejor */
+            z-index: 3;
+            height: 320px; /* Aumenta el alto total para el contenido */
+        }
+
+        /* --- Corazones Flotantes --- */
+        .heart-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 40px;
+            z-index: 4;
+            transition: opacity 0.3s;
+        }
+
+        .open .heart-icon {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="petals-container" id="petals"></div>
+
+    <div class="envelope-wrapper" onclick="toggleLetter(this)">
+        <div class="heart-icon">❤️</div>
+        <div class="envelope">
+            <div class="letter">
+                <div class="letter-text">
+                    <h2 style="margin-top: 0;">Para mi persona favorita</h2>
+                    <p>
+                        El mejor regalo que me ah dado la vida sin duda alguna fue tú compañía, verte. escucharte y sentirte es una experiencia maravillosa que siempre llevo en mi corazón, lo daría todo por un momento a tú lado porque eres mís fuerzas para seguir adelante día a día, eres la causa de mis sonrisas incluso en los días más difíciles, por todo eso y más eres el amor de mi vida.
+                    </p>
+                    
+                    <video src="assets/song5.mp4" controls width="100%" poster="assets/min5.png" style="margin: 15px 0; border-radius: 8px;"></video>
+                    
+                    <p style="font-weight: bold; margin-bottom: 20px;">¡Te amo muchísimo! ❤️</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para abrir/cerrar la carta
+        function toggleLetter(element) {
+            // Evita que se cierre si haces clic directamente en el video o sus controles
+            if (event.target.tagName === 'VIDEO' || event.target.hasAttribute('controls')) {
+                return;
+            }
+            element.classList.toggle('open');
+        }
+
+        // Generador de pétalos animados
+        function createPetals() {
+            const container = document.getElementById('petals');
+            for (let i = 0; i < 30; i++) {
+                const petal = document.createElement('div');
+                petal.classList.add('petal');
+                
+                const size = Math.random() * 15 + 10 + 'px';
+                petal.style.width = size;
+                petal.style.height = size;
+                petal.style.left = Math.random() * 100 + 'vw';
+                petal.style.animationDuration = Math.random() * 3 + 2 + 's';
+                petal.style.animationDelay = Math.random() * 5 + 's';
+                
+                container.appendChild(petal);
+            }
+        }
+
+        createPetals();
+    </script>
+</body>
+</html>
