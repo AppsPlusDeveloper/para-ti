@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Mundo de Amor Interactivo</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden; /* Evita barras de desplazamiento */
+             
+            cursor: pointer;
+            transition: background 1s ease; /* Transición suave para el fondo principal */
+        }
+
+        /* Contenedor principal centrado */
+        #contenedor-principal {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* Importante para el posicionamiento de los corazones */
+            z-index: 10; /* Asegura que el texto esté por encima de la mayoría de los corazones */
+        }
+
+        #texto-amoroso {
+            font-size: 3.5em;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            pointer-events: none; /* El texto no intercepta el clic, pasa al fondo */
+            transition: opacity 0.5s ease;
+        }
+
+        /* Estilos para los fondos amorosos */
+        .fondo-inicio {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        }
+        .fondo-pasion {
+            background: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+        }
+        .fondo-sueno {
+            background: linear-gradient(to top, #9795f0 0%, #fbc8d4 100%);
+        }
+        .fondo-eterno {
+            background: linear-gradient(-20deg, #ddd6f3 0%, #faaca8 100%, #faaca8 100%);
+        }
+
+        /* Estilos para los corazones animados que aparecen */
+        .corazon-animado {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 2em;
+            pointer-events: none; /* No interceptan clics */
+            animation: flotarYDesaparecer 2s ease-out forwards;
+        }
+
+        /* Animación para los corazones individuales */
+        @keyframes flotarYDesaparecer {
+            0% {
+                transform: translateY(0) scale(1) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1.5) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Estilos para el efecto de "onda de amor" en el fondo */
+        .onda-amor {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(0);
+            animation: ondaExpandir 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ondaExpandir {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+</head>
+<body class="fondo-inicio">
+
+    <div id="capa-ondas"></div>
+
+    <div id="contenedor-principal">
+        <h1 id="texto-amoroso">Haz clic mi Reina HERMOSA 🥰</h1>
+    </div>
+
+    <script>
+        // Array de objetos con textos y clases de fondo amorosos
+        const momentosAmorosos = [
+            { texto: "TE AMO ❤🥰", fondo: "fondo-inicio" },
+            { texto: "Eres mi primer pensamiento...", fondo: "fondo-pasion" },
+            { texto: "Y mi último deseo...", fondo: "fondo-sueno" },
+            { texto: "Eres más que indispensable en mí vida", fondo: "fondo-eterno" },
+            { texto: "Por que a tú lado me siento completo", fondo: "fondo-pasion" },
+            { texto: "Tu sonrisa es mi alegría...", fondo: "fondo-sueno" },
+            { texto: "Y tus besos la calor que mi cuerpo necesita. ", fondo: "fondo-eterno" },
+            { texto: "Haces que pierda la nocion del tiempo...", fondo: "fondo-pasion" },
+            { texto: "Por que haces todo mas bonito", fondo: "fondo-sueno" },
+            { texto: "Eres quién le da color a mis ojos...", fondo: "fondo-eterno" },
+            { texto: "Con la hermosura de tu rostro, ", fondo: "fondo-pasion" },
+            { texto: "De tu cuerpo...", fondo: "fondo-sueno" },
+            { texto: "De tus nalgas grandes jaja 😅🤣", fondo: "fondo-eterno" },
+            { texto: "Te Amo", fondo: "fondo-pasion" },
+            { texto: "De verdad te Amo", fondo: "fondo-sueno" },
+            { texto: "Te Amo más de lo que habia Amado nunca jamá", fondo: "fondo-eterno" },
+            { texto: "Y no exagero al decir que...", fondo: "fondo-pasion" },
+            { texto: "Eres la mujer más hermosa del mundo 🌎", fondo: "fondo-sueno" },
+            { texto: "Sería muy feliz de que te quedes a mi lado para siempre.", fondo: "fondo-eterno" },
+     
+        ];
+
+        let indiceActual = 0;
+        const textoEl = document.getElementById("texto-amoroso");
+        const bodyEl = document.body;
+        const capaOndas = document.getElementById("capa-ondas");
+        const contenedorPrincipal = document.getElementById("contenedor-principal");
+
+        function cambiarEscenaAmorosa(evento) {
+            // 1. Actualizar el índice para el siguiente texto y fondo
+            indiceActual = (indiceActual + 1) % momentosAmorosos.length;
+            const escenaActual = momentosAmorosos[indiceActual];
+
+            // 2. Cambiar el texto con una pequeña transición de opacidad
+            textoEl.style.opacity = 0;
+            setTimeout(() => {
+                textoEl.textContent = escenaActual.texto;
+                textoEl.style.opacity = 1;
+            }, 250); // Espera a que se desvanezca antes de cambiar el texto
+
+            // 3. Cambiar la clase del body para la animación de fondo
+            bodyEl.className = escenaActual.fondo;
+
+            // 4. Crear el efecto de onda de amor en la posición del clic
+            const onda = document.createElement("div");
+            onda.classList.add("onda-amor");
+            onda.style.left = `${evento.clientX - 50}px`; // Centrar la onda
+            onda.style.top = `${evento.clientY - 50}px`;
+            capaOndas.appendChild(onda);
+
+            // Eliminar la onda después de que termine la animación
+            setTimeout(() => {
+                onda.remove();
+            }, 600);
+
+            // 5. Crear varios corazones animados que fluyen desde el punto del clic
+            for (let i = 0; i < 5; i++) {
+                crearCorazonAnimado(evento.clientX, evento.clientY);
+            }
+        }
+
+        function crearCorazonAnimado(x, y) {
+            const corazon = document.createElement("div");
+            corazon.classList.add("corazon-animado");
+            corazon.innerHTML = "&#10084;"; // Símbolo de corazón Unicode
+
+            // Posición inicial aleatoria cerca del clic
+            const offsetWidth = (Math.random() - 0.5) * 50;
+            const offsetHeight = (Math.random() - 0.5) * 50;
+            corazon.style.left = `${x + offsetWidth}px`;
+            corazon.style.top = `${y + offsetHeight}px`;
+
+            // Tamaño y duración de animación aleatorios para variedad
+            const tamaño = Math.random() * 1.5 + 1;
+            corazon.style.fontSize = `${tamaño}em`;
+            const duracion = Math.random() * 1 + 1.5;
+            corazon.style.animationDuration = `${duracion}s`;
+
+            contenedorPrincipal.appendChild(corazon);
+
+            // Eliminar el corazón después de que termine la animación
+            setTimeout(() => {
+                corazon.remove();
+            }, duracion * 1000);
+        }
+
+        // Añadir el escuchador de eventos de clic a toda la ventana
+        window.addEventListener('click', cambiarEscenaAmorosa);
+    </script>
+</body>
+</html>
