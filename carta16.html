@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Alguien Especial ♥</title>
+    <style>
+        :root {
+            --color-bg: #ffe4e6;
+            --color-envelope: #e11d48;
+            --color-envelope-dark: #be123c;
+            --color-envelope-light: #fb7185;
+            --color-letter: #fffbeb;
+            --color-text: #4c0519;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            perspective: 1000px;
+        }
+
+        /* Lluvia de corazones de fondo */
+        .heart-particle {
+            position: absolute;
+            color: #f43f5e;
+            pointer-events: none;
+            animation: fall linear forwards;
+            opacity: 0.6;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-5vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 0.6; }
+            100% {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Contenedor principal para manejar capas correctamente */
+        .scene {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            z-index: 10;
+        }
+
+        /* Contenedor del Sobre (Animación de caída) */
+        .envelope-wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-envelope-dark);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            cursor: pointer;
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+            transform: translateY(-100vh) rotate(-10deg);
+            animation: dropIn 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes dropIn {
+            0% { transform: translateY(-100vh) rotate(-20deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        /* Efecto flotante sutil una vez que cae */
+        .envelope-wrapper.landed {
+            animation: float 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+
+        /* Caras laterales e inferior del sobre */
+        .envelope-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-right: 150px solid var(--color-envelope-light);
+            border-top: 100px solid transparent;
+            border-bottom: 100px solid var(--color-envelope-light);
+            border-left: 150px solid transparent;
+            z-index: 4;
+            border-bottom-right-radius: 6px;
+        }
+
+        .envelope-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 150px solid var(--color-envelope);
+            border-top: 100px solid transparent;
+            border-bottom: 100px solid var(--color-envelope);
+            border-right: 150px solid transparent;
+            z-index: 4;
+            border-bottom-left-radius: 6px;
+        }
+
+        /* Pestaña superior (La solapa que se abre perfectamente) */
+        .flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-top: 100px solid var(--color-envelope);
+            transform-origin: top center;
+            transition: transform 0.4s ease, z-index 0.2s;
+            z-index: 5; /* Por encima de todo al inicio */
+        }
+
+        /* Corazón para hacer clic */
+        .heart-seal {
+            position: absolute;
+            top: 85px;
+            left: 135px;
+            width: 30px;
+            height: 30px;
+            background-color: #ffffff;
+            transform: rotate(45deg);
+            z-index: 6;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .heart-seal::before, .heart-seal::after {
+            content: '';
+            width: 30px;
+            height: 30px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart-seal::before { left: -15px; }
+        .heart-seal::after { top: -15px; }
+
+        .envelope-wrapper:hover .heart-seal {
+            transform: rotate(45deg) scale(1.1);
+            background-color: #ffe4e6;
+        }
+        .envelope-wrapper:hover .heart-seal::before,
+        .envelope-wrapper:hover .heart-seal::after {
+            background-color: #ffe4e6;
+        }
+
+        /* --- SECUENCIA DE APERTURA MEJORADA --- */
+        
+        /* 1. La solapa se voltea hacia arriba limpiamente */
+        .envelope-wrapper.open .flap {
+            transform: scaleY(-1);
+            z-index: 2; /* Pasa detrás de la carta al abrirse */
+        }
+
+        /* 2. El sello de corazón desaparece */
+        .envelope-wrapper.open .heart-seal {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* La Carta oculta dentro */
+        .letter {
+            position: absolute;
+            bottom: 5px;
+            left: 10px;
+            width: 280px;
+            height: 180px;
+            background-color: var(--color-letter);
+            border-radius: 4px;
+            z-index: 3; /* Detrás de los bordes frontales del sobre al inicio */
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.3s, height 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.3s, z-index 0s 0.5s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 3. La carta sube, crece y se sitúa en frente */
+        .envelope-wrapper.open .letter {
+            transform: translateY(-140px);
+            height: 380px;
+            z-index: 20; /* Sube al frente absoluto */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+        }
+
+        /* Contenedor del texto con SCROLL personalizado si excede la altura */
+        .letter-text {
+            color: var(--color-text);
+            padding: 25px 20px;
+            height: 100%;
+            overflow-y: auto; /* Activa el scroll si el texto supera el tamaño */
+            opacity: 0;
+            transition: opacity 0.4s ease 0.8s;
+            scrollbar-width: thin; /* Para navegadores Firefox */
+            scrollbar-color: var(--color-envelope-light) transparent;
+        }
+
+        /* Scrollbar personalizado para navegadores Webkit (Chrome, Safari, Edge) */
+        .letter-text::-webkit-scrollbar {
+            width: 6px;
+        }
+        .letter-text::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .letter-text::-webkit-scrollbar-thumb {
+            background-color: var(--color-envelope-light);
+            border-radius: 10px;
+        }
+
+        .envelope-wrapper.open .letter-text {
+            opacity: 1;
+        }
+
+        .letter-text h1 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            text-align: center;
+            color: var(--color-envelope-dark);
+            font-family: 'Georgia', serif;
+        }
+
+        .letter-text p {
+            margin-bottom: 14px;
+            font-size: 14.5px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .signature {
+            margin-top: 25px;
+            font-style: italic;
+            font-weight: bold;
+            text-align: right !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scene"> </br> </br>
+        <!-- Sobre -->
+        <div class="envelope-wrapper" id="envelope">
+            <div class="flap"></div>
+            <div class="heart-seal"></div>
+            
+            <!-- Carta interna -->
+            <div class="letter">
+                <div class="letter-text">
+                    <h1>Para el amor de mi vida</h1>
+                    
+                    ¿Alguna vez haz sentido que las palabras no te alcanzan para expresar algo que sientes? No lo se, podría ser un enojo o una tristeza incontrolable, tanto que crees que si lo explicas  a alguien más esa persona será incapaz de comprenderte... </br> Bueno, eso es justo lo que me pasa a mí,  siento un gran amor por ti, tanto que sin importar cuanto trate de explicar o expresar lo que siento, creo que nunca termina siendo suficiente, creo que no me entiendes cuando te digo que eres el amor de mi vida, que no quiero ni necesito a alguien más, tal vez creas que exagero, que encontré a alguien más y me olvidaré de ti. Pero no tienes idea de lo mucho que te amo y de lo mucho que deseo que seas únicamente tú, y no te culpo por que las palabras no me alcanzan para expresarlo ¿Cómo sabrías lo que hay en mi corazón realmente? Tendrías que entrar en él y es físicamente imposible, pero puedes estar segura de que aunque físicamente no estés dentro de mi corazón,  yo siempre te llevo dentro del el, de tal manera que necesitaría esta vida y diez más para poder decirte lo mucho que te quiero, lo mucho que vales para mí y lo mucho que te amo. </br>Pienso que si pudieras sentir lo que hay en mi corazón, entenderías que es incomparable lo que siento, por que se extende más allá de lo que puedes ver y tocar, mi amor por ti es tan grande como el universo mismo, no puedes ir más allá de el, crece constantemente y lo seguirá haciendo por toda la eternidad. TE AMO ❤️ 
+                    
+                    <p class="signature">Por siempre tuyo</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const envelope = document.getElementById('envelope');
+
+        // Activa el efecto flotante cuando termina la animación de caída inicial
+        envelope.addEventListener('animationend', (e) => {
+            if (e.animationName === 'dropIn') {
+                envelope.classList.add('landed');
+            }
+        });
+
+        // Evento al hacer clic en el sobre
+        envelope.addEventListener('click', () => {
+            if (!envelope.classList.contains('open')) {
+                // Quitamos la animación de flotar para que no interfiera con la apertura
+                envelope.classList.remove('landed');
+                // Añadimos la clase que activa la apertura limpia y salida de la carta
+                envelope.classList.add('open');
+            }
+        });
+
+        // Función para crear lluvia de corazones de fondo
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-particle');
+            heart.innerHTML = '♥';
+            
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 15 + 10 + 'px';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        // Generar corazones continuamente
+        setInterval(createHeart, 350);
+    </script>
+</body>
+</html>
