@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contrato de Amor Perpetuo ♥</title>
+    <style>
+        :root {
+            --color-bg: #fdf2f8;
+            --color-primary: #db2777;
+            --color-primary-dark: #9d174d;
+            --color-paper: #ffffff;
+            --color-text: #1f2937;
+            --color-signature: #0f172a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            font-family: 'Georgia', serif;
+            color: var(--color-text);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Contenedor del pergamino / contrato */
+        .contract-container {
+            background: var(--color-paper);
+            max-width: 650px;
+            width: 100%;
+            padding: 40px 50px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid #fbcfe8;
+            position: relative;
+        }
+
+        /* Bordes decorativos estilo vintage/romántico */
+        .contract-container::before {
+            content: '';
+            position: absolute;
+            top: 15px; left: 15px; right: 15px; bottom: 15px;
+            border: 2px dashed #fbcfe8;
+            border-radius: 4px;
+            pointer-events: none;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--color-primary-dark);
+            font-size: 28px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .clause {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            text-align: justify;
+            font-size: 16px;
+        }
+
+        .clause strong {
+            color: var(--color-primary);
+        }
+
+        /* Sección de firmas */
+        .signature-section {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 600px) {
+            .signature-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .signature-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .signature-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--color-primary-dark);
+        }
+
+        /* El recuadro del lienzo de dibujo */
+        .canvas-container {
+            position: relative;
+            width: 100%;
+            height: 150px;
+            background: #fafafa;
+            border: 1px dashed #cbd5e1;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+            cursor: crosshair;
+            touch-action: none; /* Evita el scroll de la pantalla al firmar en móvil */
+        }
+
+        /* Botón para borrar la firma si sale mal */
+        .clear-btn {
+            margin-top: 8px;
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            font-size: 12px;
+            cursor: pointer;
+            font-family: sans-serif;
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+
+        .clear-btn:hover {
+            color: var(--color-primary);
+        }
+
+        /* Botón de aceptación final */
+        .submit-btn {
+            display: block;
+            width: 200px;
+            margin: 40px auto 0 auto;
+            padding: 12px;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(219, 39, 119, 0.3);
+            transition: transform 0.2s, background 0.2s;
+            font-family: sans-serif;
+        }
+
+        .submit-btn:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contract-container">
+        <h1>Contrato Oficial de Amor</h1>
+        
+        <div class="clause">
+            <strong>PRIMERA. Objeto del Contrato:</strong> Ambas partes se comprometen formalmente a proveerse mutuamente dosis diarias de abrazos, palabras de aliento y risas espontáneas, garantizando un ambiente seguro donde los días grises queden estrictamente prohibidos.
+        </div>
+
+        <div class="clause">
+            <strong>SEGUNDA. Cláusula de Lealtad:</strong> Quien suscribe este documento declara bajo juramento emocional que eres su persona favorita en el universo entero, prometiendo cuidar de este vínculo con paciencia, complicidad y algún que otro detalle inesperado.
+        </div>
+
+        <div class="clause">
+            <strong>TERCERA. Resolución de Conflictos:</strong> Cualquier malentendido, discusión o desacuerdo menor deberá ser solucionado mediante un tratado inmediato de cosquillas, un helado o, en su defecto, un abrazo prolongado de no menos de 20 segundos.
+        </div>
+
+        <div class="clause">
+            <strong>CUARTA. Vigencia:</strong> Las condiciones estipuladas en el presente acuerdo entrarán en vigor de manera inmediata y mantendrán su validez por tiempo indefinido, resistiendo rutinas y distancias de manera inquebrantable.
+        </div>
+
+        <!-- Sección de Firmas -->
+        <div class="signature-section">
+            
+            <!-- Firma 1 (Pre-firmada / Tuya) -->
+            <div class="signature-box">
+                <span class="signature-title">Solicitante</span>
+                <div class="canvas-container" style="display: flex; justify-content: center; align-items: center; background: #fffafb;">
+                    <span style="font-family: 'Brush Script MT', cursive, sans-serif; font-size: 28px; color: var(--color-primary); transform: rotate(-5deg);">Erick Miguel</br>Cervantes Munguia</span>
+                </div>
+                <button class="clear-btn" style="visibility: hidden;">Borrar</button>
+            </div>
+
+            <!-- Firma 2 (El interactivo para dibujar) -->
+            <div class="signature-box">
+                <span class="signature-title">La mujer más HERMOSA</span>
+                <div class="canvas-container">
+                    <canvas id="signature-canvas"></canvas>
+                </div>
+                <button class="clear-btn" id="clear-button">Borrar y reintentar</button>
+            </div>
+
+        </div>
+
+        <button class="submit-btn" id="submit-button">Sellar Contrato</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('signature-canvas');
+        const ctx = canvas.getContext('2d');
+        const clearButton = document.getElementById('clear-button');
+        const submitButton = document.getElementById('submit-button');
+
+        // Ajustar el tamaño del canvas al tamaño real en pantalla
+        function resizeCanvas() {
+            // Guardamos el contenido por si se rota la pantalla en móviles
+            const tempCanvas = document.createElement('canvas');
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCanvas.width = canvas.width;
+            tempCanvas.height = canvas.height;
+            if(canvas.width > 0 && canvas.height > 0) {
+                tempCtx.drawImage(canvas, 0, 0);
+            }
+
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+
+            // Restaurar configuración del pincel
+            ctx.strokeStyle = '#0f172a'; // Color de tinta oscura
+            ctx.lineWidth = 2.5;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+
+            // Volver a dibujar si había algo
+            ctx.drawImage(tempCanvas, 0, 0, rect.width, rect.height);
+        }
+
+        // Ejecutar al cargar la página
+        window.addEventListener('resize', resizeCanvas);
+        // Pequeño delay para asegurar que el contenedor tiene dimensiones listas
+        setTimeout(resizeCanvas, 100);
+
+        // Variables de estado del dibujo
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+
+        // Obtener las coordenadas correctas según el mouse o toque
+        function getCoordinates(e) {
+            const rect = canvas.getBoundingClientRect();
+            // Soporte para Mobile (Touch) vs Desktop (Mouse)
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            
+            return {
+                x: clientX - rect.left,
+                y: clientY - rect.top
+            };
+        }
+
+        function startDrawing(e) {
+            isDrawing = true;
+            const coords = getCoordinates(e);
+            lastX = coords.x;
+            lastY = coords.y;
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            e.preventDefault(); // Previene que la pantalla se mueva en móviles
+
+            const coords = getCoordinates(e);
+
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(coords.x, coords.y);
+            ctx.stroke();
+
+            lastX = coords.x;
+            lastY = coords.y;
+        }
+
+        function stopDrawing() {
+            isDrawing = false;
+        }
+
+        // --- Eventos de Ratón (Desktop) ---
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        window.addEventListener('mouseup', stopDrawing);
+
+        // --- Eventos Táctiles (Móviles/Tablets) ---
+        canvas.addEventListener('touchstart', startDrawing);
+        canvas.addEventListener('touchmove', draw);
+        window.addEventListener('touchend', stopDrawing);
+
+        // Botón Borrar
+        clearButton.addEventListener('click', () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        });
+
+        // Botón Enviar / Sellar
+        submitButton.addEventListener('click', () => {
+            // Verificar si el lienzo está vacío antes de festejar
+            const blank = document.createElement('canvas');
+            blank.width = canvas.width;
+            blank.height = canvas.height;
+            
+            if (canvas.toDataURL() === blank.toDataURL()) {
+                alert('¡Espera! Falta tu firma para validar este compromiso legal.');
+            } else {
+                alert('Ya firmaste mi reina hermosa 🥰 No te puedes arrepentir eh 😑 TE AMO 🥰❤️');
+            }
+        });
+    </script>
+</body>
+</html>
